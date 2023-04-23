@@ -11,12 +11,14 @@ let totalNumer = document.getElementById("total");
 let number = "";
 var firstnumber = "";
 let operatorMath = "";
-let equealsMath = "";
 let dotMat = "0.";
 
 function addnumber(e){
-    number += e;
-    totalNumer.innerHTML = number;
+
+    if(number.length < 11){
+        number += e;
+        totalNumer.innerHTML = addCommaNumber(number);
+    }
 }
 
 function dot(){
@@ -25,7 +27,12 @@ function dot(){
     if(numberString.search(dotMat) == '-1' ){
         if(numberString == "" || numberString == 0){
             numberString = dotMat + numberString;
-            number = numberString;
+            number = numberString.toString();
+            totalNumer.innerHTML = number;
+        }else if(numberString > 0 || numberString < 0){
+            dotMat = ".";
+            numberString = numberString + dotMat;
+            number = numberString.toString();
             totalNumer.innerHTML = number;
         }
     }
@@ -55,26 +62,47 @@ function operator(e){
     number = "";
 }
 
-function equal(e){
-    equealsMath = e;
+function equal(){
+
+    //removing the , in my string firstnumber to be able to do the math
     if(operatorMath === '÷'){
         if(number != "0"){
-            total = Number(firstnumber) / Number(number);
+            if(firstnumber.replace(/,/g, '') || number.replace(/,/g, '')){
+                total = Number(firstnumber.replace(/,/g, '')) / Number(number.replace(/,/g, ''));
+            }else{
+                total = Number(firstnumber) / Number(number);
+            }
         }else{
             total = "Error";
         }
         number = total;
     }else if(operatorMath === '×'){
-        total = Number(firstnumber) * Number(number);
+        if(firstnumber.replace(/,/g, '') || number.replace(/,/g, '')){
+            total = Number(firstnumber.replace(/,/g, '')) * Number(number.replace(/,/g, ''));
+        }else{
+            total = Number(firstnumber) * Number(number);
+        }
         number = total;
     }else if(operatorMath === '-'){
-        total = Number(firstnumber) - Number(number);
+        if(firstnumber.replace(/,/g, '') || number.replace(/,/g, '')){
+            total = Number(firstnumber.replace(/,/g, '')) - Number(number.replace(/,/g, ''));
+        }else{
+            total = Number(firstnumber) - Number(number);
+        }
         number = total;
     }else if(operatorMath === '+'){
-        total = Number(firstnumber) + Number(number);
+        if(firstnumber.replace(/,/g, '') || number.replace(/,/g, '')){
+            total = Number(firstnumber.replace(/,/g, '')) + Number(number.replace(/,/g, ''));
+        }else{
+            total = Number(firstnumber) + Number(number);
+        }
         number = total;
     }else if(operatorMath === "%"){
-        total =  Number(firstnumber) * (Number(number) / 100);
+        if(firstnumber.replace(/,/g, '') || number.replace(/,/g, '')){
+            total =  Number(number.replace(/,/g, '')) * (Number(firstnumber.replace(/,/g, '') / 100));
+        }else{
+            total =  Number(firstnumber) * (Number(number) / 100);
+        }
         number = total;
     }
 
@@ -86,7 +114,8 @@ function equal(e){
 
     firstnumber = "";
     operatorMath = "";
-    totalNumer.innerHTML = total;
+    
+    totalNumer.innerHTML = addCommaNumber(total);
 }
 
 function clearMath(){
@@ -98,8 +127,10 @@ function clearMath(){
 }
 
 function plusminus(){
-
-    if(number > 0 || number == ""){
+    // removing the comma because js is not allow to use , 
+    let removingComma = number.toString().replace(/,/g, '');
+    // if the number is grater than 0 or iqual that nothing is going to add the -
+    if(removingComma > 0 || removingComma == ""){
         number = "-" + number;
     }else{
         // created a new array to latter fill with the numbers
@@ -114,4 +145,20 @@ function plusminus(){
     }  
     number.toString;
     totalNumer.innerHTML = number;
+}
+
+function addCommaNumber(e){
+    const formatter = new Intl.NumberFormat('en-US');
+    //   adding the e to be an string and deleting the comma
+    const floatNum = parseFloat(e.toString().replace(/,/g, ''));
+    let totalComma;
+    // if is a string
+    if(isNaN(floatNum)){
+        totalComma = e;
+    }else{
+
+        // adding the comma
+        totalComma = formatter.format(floatNum);
+    }
+    return number = totalComma;
 }
