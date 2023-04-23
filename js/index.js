@@ -35,7 +35,7 @@ function operator(e){
     let cerozero = [];
     operatorMath = e;
     
-    if(number == ""){
+    if(number == "" || number == "Error"){
         number = "0";
     }
     firstnumber = number.toString();
@@ -58,7 +58,11 @@ function operator(e){
 function equal(e){
     equealsMath = e;
     if(operatorMath === '÷'){
-        total = Number(firstnumber) / Number(number);
+        if(number != "0"){
+            total = Number(firstnumber) / Number(number);
+        }else{
+            total = "Error";
+        }
         number = total;
     }else if(operatorMath === '×'){
         total = Number(firstnumber) * Number(number);
