@@ -1,0 +1,193 @@
+body{
+    font-size: 1.3rem;
+    color: var(--white);
+    background-color: #ffdfdf;
+}
+
+:root{
+    --phone-color : #ff2323;
+    --number : #808080;
+    --operator : #ffa500;
+    --dark-operator-active: #e27c00;
+    --white : #ffffff;
+    --black : #000000;
+    --light-black : #313131;
+    --light-gray : #c8c8c8;
+}
+
+.container{
+    margin-top: 50px;
+    width: 290px;
+    display: grid;
+    border: 2px solid var(--phone-color);
+    border-radius: 40px;
+    justify-items: center;
+    padding-top: 20px;
+    padding-bottom: 0px;
+    background-color: var(--black);
+    padding-left: 0px;
+    padding-right: 0px;
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+}
+
+.row{
+    margin-top: 5px;
+}
+
+.col-1{
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 65px;
+}
+
+.col-2{
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 130px;
+}
+
+.col-4{
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 300px;
+}
+
+.display-time{
+    height: 50px;
+}
+
+.time-icons{
+    width: 96px;
+}
+
+.time{
+    padding-left: 10px;
+    font-size: .8rem;
+    margin-right: 5px;
+}
+.camera{
+    color: transparent;
+    background-color: var(--light-black);
+    border-radius: 5px;
+    height: 10px;
+    position: relative;
+    top: 5px;
+}
+
+.icon-cellphone{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    top: 5px;
+}
+
+svg{
+    margin-right: 5px;
+    margin-left: 0px;
+}
+
+svg:first-child{
+    margin-left: 20px;
+}
+
+.text-end{
+    padding-right: 20px;
+}
+
+.buttom-mute{
+    height: 20px;
+    border-radius: 5px;
+    width: 5px;
+    background: linear-gradient(90deg, var(--phone-color) 11%, transparent 13%);
+    position: relative;
+    top: 6px;
+    left: -99px;
+}
+
+.volume{
+    border-radius: 5px;
+    height: 40px;
+    width: 5px;
+    background: linear-gradient(90deg, var(--phone-color) 11%, transparent 13%);
+    position: relative;
+
+}
+
+.volumeup{
+    top: 44px;
+    left: -123px;
+}
+
+.volumedown{
+    top: 96px;
+    left: -147px;
+}
+
+.turnoff{
+    height: 50px;
+    background: linear-gradient(90deg, transparent 89%, var(--phone-color) 87%);
+    top: 4px;
+    right: -99px;
+}
+
+#total{
+    font-size: 2.5rem;
+    margin-left: 11px;
+    overflow: hidden;
+    margin-right: 11px;
+    height: 60px;
+    overflow: scroll;
+}
+
+.button-style{
+    width: 60px;
+    height: 60px;
+    border: none;
+    border-radius: 50%;
+}
+
+.button-cero-style{
+    border: none;
+    border-radius: 50px;
+    width: 120px;
+    height: 60px;
+}
+
+.gray-button{
+    background-color: var(--light-gray);
+}
+
+.gray-button:active{
+    background-color: var(--number);
+    transition: all 0.2s ease-out;
+}
+
+.orange-button{
+    background-color: var(--operator);
+    color: var(--white);
+}
+
+.orange-button:active{
+    background-color: var(--dark-operator-active);
+    transition: all 0.2s ease-out;
+}
+
+.dark-gry-button, .button-cero-style{
+    background-color: var(--number);
+    color: var(--white);
+}
+.dark-gry-button:active, .button-cero-style:active{
+    background-color : var(--light-gray);
+    transition: all 0.2s ease-out;
+}
+
+.hr-position{
+    width: 90px;
+}
+
+hr.newhr {
+    border-top: 3px solid var(--white);;
+    opacity: 100;
+    border-radius: 5px;
+    width: 100%;
+}

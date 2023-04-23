@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="shortcut icon" href="images/iconBlack50.png" />
+    <link rel="apple-touch-icon" href="images/iconBlack50.png">
+    <link rel="icon" sizes="192x192" href="images/iconBlack50.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row display-time">
+            <div class="col-1 time-icons"><div id="time" class="time text-end"><p >9:43</p></div></div>
+            <div class="col-2 time-icons"><div class="camera"></div></div>
+            <div class="col-1 time-icons icon-cellphone">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 640 512" height=".7em" width=".7em" xmlns="http://www.w3.org/2000/svg"><path d="M216 288h-48c-8.84 0-16 7.16-16 16v192c0 8.84 7.16 16 16 16h48c8.84 0 16-7.16 16-16V304c0-8.84-7.16-16-16-16zM88 384H40c-8.84 0-16 7.16-16 16v96c0 8.84 7.16 16 16 16h48c8.84 0 16-7.16 16-16v-96c0-8.84-7.16-16-16-16zm256-192h-48c-8.84 0-16 7.16-16 16v288c0 8.84 7.16 16 16 16h48c8.84 0 16-7.16 16-16V208c0-8.84-7.16-16-16-16zm128-96h-48c-8.84 0-16 7.16-16 16v384c0 8.84 7.16 16 16 16h48c8.84 0 16-7.16 16-16V112c0-8.84-7.16-16-16-16zM600 0h-48c-8.84 0-16 7.16-16 16v480c0 8.84 7.16 16 16 16h48c8.84 0 16-7.16 16-16V16c0-8.84-7.16-16-16-16z"></path></svg>
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height=".7em" width=".7em" xmlns="http://www.w3.org/2000/svg"><path d="M723 620.5C666.8 571.6 593.4 542 513 542s-153.8 29.6-210.1 78.6a8.1 8.1 0 0 0-.8 11.2l36 42.9c2.9 3.4 8 3.8 11.4.9C393.1 637.2 450.3 614 513 614s119.9 23.2 163.5 61.5c3.4 2.9 8.5 2.5 11.4-.9l36-42.9c2.8-3.3 2.4-8.3-.9-11.2zm117.4-140.1C751.7 406.5 637.6 362 513 362s-238.7 44.5-327.5 118.4a8.05 8.05 0 0 0-1 11.3l36 42.9c2.8 3.4 7.9 3.8 11.2 1C308 472.2 406.1 434 513 434s205 38.2 281.2 101.6c3.4 2.8 8.4 2.4 11.2-1l36-42.9c2.8-3.4 2.4-8.5-1-11.3zm116.7-139C835.7 241.8 680.3 182 511 182c-168.2 0-322.6 59-443.7 157.4a8 8 0 0 0-1.1 11.4l36 42.9c2.8 3.3 7.8 3.8 11.1 1.1C222 306.7 360.3 254 511 254c151.8 0 291 53.5 400 142.7 3.4 2.8 8.4 2.3 11.2-1.1l36-42.9c2.9-3.4 2.4-8.5-1.1-11.3zM448 778a64 64 0 1 0 128 0 64 64 0 1 0-128 0z"></path></svg>
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height=".7em" width=".7em" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12 5H2a1 1 0 00-1 1v4a1 1 0 001 1h10a1 1 0 001-1V6a1 1 0 00-1-1zM2 4a2 2 0 00-2 2v4a2 2 0 002 2h10a2 2 0 002-2V6a2 2 0 00-2-2H2z" clip-rule="evenodd"></path><path d="M2 6h10v4H2V6zm12.5 3.5a1.5 1.5 0 000-3v3z"></path></svg>
+            </div>
+        </div>
+        <div class="row">
+            <div class="buttom-mute"></div>
+            <div class="volume volumeup"></div>
+            <div class="volume volumedown"></div>
+            <div class="volume turnoff"></div>
+        </div>
+        <div class="row d-flex align-items-center">
+            <div class="col-4">
+                <p class="text-end" id="total">0</p>
+            </div>
+        </div>
+        <div class="row d-flex align-items-center">
+            <div class="col-1">
+                <input type="button" value="AC" class="button-style gray-button" id="ac" onclick="clearMath();">
+            </div>
+            <div class="col-1">
+                <input type="button" value="+/-" class="button-style gray-button" id="plusminus" onclick="plusminus();">
+            </div>
+            <div class="col-1">
+                <input type="button" value="&#37;" class="button-style gray-button" id="percent" onclick="operator(this.value);">
+            </div>
+            <div class="col-1">
+                <input type="button" value="&#247;" class="button-style orange-button" id="divides" onclick="operator(this.value);">
+            </div>
+        </div>
+        <div class="row d-flex align-items-center">
+            <div class="col-1">
+                <input type="button" value="7" class="button-style dark-gry-button" id="7" onclick="addnumber(this.value);">
+            </div>
+            <div class="col-1">
+                <input type="button" value="8" class="button-style dark-gry-button" id="8" onclick="addnumber(this.value);">
+            </div>
+            <div class="col-1">
+                <input type="button" value="9" class="button-style dark-gry-button" id="9" onclick="addnumber(this.value);">
+            </div>
+            <div class="col-1">
+                <input type="button" value="&#215;" class="button-style orange-button" id="x" onclick="operator(this.value)">
+            </div>
+        </div>
+        <div class="row d-flex align-items-center">
+            <div class="col-1">
+                <input type="button" value="4" class="button-style dark-gry-button" id="4" onclick="addnumber(this.value);">
+            </div>
+            <div class="col-1">
+                <input type="button" value="5" class="button-style dark-gry-button" id="5" onclick="addnumber(this.value);">
+            </div>
+            <div class="col-1">
+                <input type="button" value="6" class="button-style dark-gry-button" id="6" onclick="addnumber(this.value);">
+            </div>
+            <div class="col-1">
+                <input type="button" value="&#45;" class="button-style orange-button" id="minus" onclick="operator(this.value)">
+            </div>
+        </div>
+        <div class="row d-flex align-items-center">
+            <div class="col-1">
+                <input type="button" value="1" class="button-style dark-gry-button" id="1" onclick="addnumber(this.value);">
+            </div>
+            <div class="col-1">
+                <input type="button" value="2" class="button-style dark-gry-button" id="2" onclick="addnumber(this.value);">
+            </div>
+            <div class="col-1">
+                <input type="button" value="3" class="button-style dark-gry-button" id="3" onclick="addnumber(this.value);">
+            </div>
+            <div class="col-1">
+                <input type="button" value="&#43;" class="button-style orange-button" id="plus" onclick="operator(this.value)">
+            </div>
+        </div>
+        <div class="row d-flex align-items-center">
+            <div class="col-2">
+                <input type="button" value="0" class="button-cero-style" id="0" onclick="addnumber(this.value);">
+            </div>
+            <div class="col-1">
+                <input type="button" value="." class="button-style dark-gry-button" id="dot" onclick="dot()">
+            </div>
+            <div class="col-1">
+                <input type="button" value="&#61;" class="button-style orange-button" id="equal" onclick="equal(this.value)">
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-2 hr-position">
+                <hr class="newhr">
+            </div>
+        </div>
+    </div>
+    <script src="js/index.js"></script>
+</body>
+</html>
