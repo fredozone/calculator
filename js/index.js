@@ -1,55 +1,56 @@
 // show real time 
+function timeClock(){
+    var day = new Date();
+    var hours = day.getHours();
+    hours = (hours % 12) || 12;
+    let minutes = day.getMinutes();
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    var finalTime = hours + ":" + minutes; 
+    document.getElementById("time").innerHTML = finalTime;
+}
 
-var day = new Date();
-var hours = day.getHours();
-hours = (hours % 12) || 12;
-var minutes = day.getMinutes() ;
-var finalTime = hours + ":" + minutes; 
+setInterval(timeClock, 1000);
 
-let time = document.getElementById("time").innerHTML = finalTime;
 let totalNumer = document.getElementById("total");
 let number = "";
 var firstnumber = "";
 let operatorMath = "";
-let dotMat = "0.";
+let dotMat = ".";
 
 function addnumber(e){
-
-    if(number.length < 11){
+    if(number.length < 20){
         number += e;
         totalNumer.innerHTML = addCommaNumber(number);
     }
 }
 
 function dot(){
-    let numberString = number.toString();
+    let numberString = number.toString().replace(/,/g, '');
     // search if the find the 0. in the string 
-    if(numberString.search(dotMat) == '-1' ){
+    if(numberString.indexOf(dotMat) === -1 ){
         if(numberString == "" || numberString == 0){
+            dotMat = "0.";
             numberString = dotMat + numberString;
-            number = numberString.toString();
-            totalNumer.innerHTML = number;
-        }else if(numberString > 0 || numberString < 0){
+        }else if(numberString >= 0 || numberString <= 0){
             dotMat = ".";
-            numberString = numberString + dotMat;
-            number = numberString.toString();
-            totalNumer.innerHTML = number;
+            numberString = numberString.concat("", dotMat);
         }
     }
+    number = numberString;
+    totalNumer.innerHTML = number;
 }
 
 function operator(e){
     let cerozero = [];
     operatorMath = e;
-    
+
     if(number == "" || number == "Error"){
         number = "0";
     }
     firstnumber = number.toString();
     // deleteing the ceros on the left
-    let textNumer = firstnumber.replace(/^0+/, '');
+    let textNumer = firstnumber.replace(/^0+/,'');
     for(let j=0; j < textNumer.length; j++){
-        console.log("textNumer[j] : " + textNumer[j]);
         if(textNumer[0] == "."){
                 cerozero = "0"+textNumer;
         }else{
@@ -58,7 +59,7 @@ function operator(e){
         firstnumber = cerozero;
     }
 
-    totalNumer.innerHTML = firstnumber;
+    totalNumer.innerHTML = operatorMath;
     number = "";
 }
 
@@ -68,9 +69,11 @@ function equal(){
     if(operatorMath === '÷'){
         if(number != "0"){
             if(firstnumber.replace(/,/g, '') || number.replace(/,/g, '')){
-                total = Number(firstnumber.replace(/,/g, '')) / Number(number.replace(/,/g, ''));
+                totalOne = Number(firstnumber.replace(/,/g, '')) / Number(number.replace(/,/g, ''));
+                total = totalOne.toFixed(2).replace(/\.00$/, '');
             }else{
-                total = Number(firstnumber) / Number(number);
+                totalOne = Number(firstnumber) / Number(number);
+                total = totalOne.toFixed(2).replace(/\.00$/, '');
             }
         }else{
             total = "Error";
@@ -78,30 +81,38 @@ function equal(){
         number = total;
     }else if(operatorMath === '×'){
         if(firstnumber.replace(/,/g, '') || number.replace(/,/g, '')){
-            total = Number(firstnumber.replace(/,/g, '')) * Number(number.replace(/,/g, ''));
+            totalOne = Number(firstnumber.replace(/,/g, '')) * Number(number.replace(/,/g, ''));
+            total = totalOne.toFixed(2).replace(/\.00$/, '');
         }else{
-            total = Number(firstnumber) * Number(number);
+            totalOne = Number(firstnumber) * Number(number);
+            total = totalOne.toFixed(2).replace(/\.00$/, '');
         }
         number = total;
     }else if(operatorMath === '-'){
         if(firstnumber.replace(/,/g, '') || number.replace(/,/g, '')){
-            total = Number(firstnumber.replace(/,/g, '')) - Number(number.replace(/,/g, ''));
+            totalOne = Number(firstnumber.replace(/,/g, '')) - Number(number.replace(/,/g, ''));
+            total = totalOne.toFixed(2).replace(/\.00$/, '');
         }else{
-            total = Number(firstnumber) - Number(number);
+            totalOne = Number(firstnumber) - Number(number);
+            total = totalOne.toFixed(2).replace(/\.00$/, '');
         }
         number = total;
     }else if(operatorMath === '+'){
         if(firstnumber.replace(/,/g, '') || number.replace(/,/g, '')){
-            total = Number(firstnumber.replace(/,/g, '')) + Number(number.replace(/,/g, ''));
+            totalOne = Number(firstnumber.replace(/,/g, '')) + Number(number.replace(/,/g, ''));
+            total = totalOne.toFixed(2).replace(/\.00$/, '');
         }else{
-            total = Number(firstnumber) + Number(number);
+            totalOne = Number(firstnumber) + Number(number);
+            total = totalOne.toFixed(2).replace(/\.00$/, '');
         }
         number = total;
     }else if(operatorMath === "%"){
         if(firstnumber.replace(/,/g, '') || number.replace(/,/g, '')){
-            total =  Number(number.replace(/,/g, '')) * (Number(firstnumber.replace(/,/g, '') / 100));
+            totalOne =  Number(number.replace(/,/g, '')) * (Number(firstnumber.replace(/,/g, '') / 100));
+            total = totalOne.toFixed(2).replace(/\.00$/, '');
         }else{
-            total =  Number(firstnumber) * (Number(number) / 100);
+            totalOne =  Number(firstnumber) * (Number(number) / 100);
+            total = totalOne.toFixed(2).replace(/\.00$/, '');
         }
         number = total;
     }
@@ -111,10 +122,12 @@ function equal(){
         total = Number(firstnumber) + Number(number);
         number = total;
     }
-
+    let aqui = parseFloat(firstnumber.replace(/,/g, ''));
+    let num = parseFloat(aqui); // convert the string to a float
+    let formattedNum = num.toFixed(2);
+    console.log(formattedNum);
     firstnumber = "";
     operatorMath = "";
-    
     totalNumer.innerHTML = addCommaNumber(total);
 }
 
@@ -143,22 +156,30 @@ function plusminus(){
         }
         number = positive;
     }  
-    number.toString;
-    totalNumer.innerHTML = number;
+
+    totalNumer.innerHTML = addCommaNumber(number);
 }
 
 function addCommaNumber(e){
-    const formatter = new Intl.NumberFormat('en-US');
-    //   adding the e to be an string and deleting the comma
-    const floatNum = parseFloat(e.toString().replace(/,/g, ''));
-    let totalComma;
-    // if is a string
-    if(isNaN(floatNum)){
-        totalComma = e;
-    }else{
-
-        // adding the comma
-        totalComma = formatter.format(floatNum);
+    const str = e.toString(); // convert to string
+    const isNegative = str.charAt(0) === '-';
+    const [integerPart, decimalPart] = str.replace('-', '').split('.'); // remove negative sign if present and split into integer and decimal parts
+    let formattedInteger = '';
+    
+    // add commas to the integer part
+    for (let i = integerPart.length - 1; i >= 0; i--) {
+      const digit = integerPart.charAt(i);
+      formattedInteger = digit + formattedInteger; // prepend the digit to the formatted integer
+      if ((integerPart.length - i) % 3 === 0 && i !== 0) {
+        formattedInteger = ',' + formattedInteger; // add a comma after every 3 digits (except for the last group)
+      }
     }
-    return number = totalComma;
+    
+    // combine the formatted integer and decimal parts, and add negative sign if necessary
+    let result = isNegative ? '-' + formattedInteger : formattedInteger;
+    if (decimalPart !== undefined) {
+      result += '.' + decimalPart;
+    }
+    
+    return result;
 }

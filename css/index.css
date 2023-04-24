@@ -126,16 +126,16 @@ svg:first-child{
 .turnoff{
     height: 50px;
     background: linear-gradient(90deg, transparent 89%, var(--phone-color) 87%);
-    top: 4px;
+    top: 58px;
     right: -99px;
 }
 
 #total{
-    font-size: 2.5rem;
+    font-size: 3rem;
     margin-left: 11px;
     overflow: hidden;
     margin-right: 11px;
-    height: 60px;
+    height: 70px;
     overflow: scroll;
 }
 
@@ -144,6 +144,8 @@ svg:first-child{
     height: 60px;
     border: none;
     border-radius: 50%;
+    display: flex;
+    justify-content: space-around;
 }
 
 .button-cero-style{
