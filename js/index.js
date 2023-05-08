@@ -24,14 +24,15 @@ function addnumber(e){
         totalafter = 0;
         number = "";
     }
-    
-    if(number.length < 20){
+
+    if(number.length < 9){
         number += e;
         totalNumer.innerHTML = addCommaNumber(number);
     }
 }
 
 function dot(){
+    // removing the comma replace(/,/g, '')  to empty space
     let numberString = number.toString().replace(/,/g, '');
     // search if the find the 0. in the string 
     if(numberString.indexOf(dotMat) === -1 ){
@@ -56,6 +57,7 @@ function operator(e){
     }
     firstnumber = number.toString();
     // deleteing the ceros on the left
+    // removing the comma replace(/,/g, '')  to empty space
     let textNumer = firstnumber.replace(/^0+/,'');
     for(let j=0; j < textNumer.length; j++){
         if(textNumer[0] == "."){
@@ -75,6 +77,7 @@ function equal(){
     //removing the , in my string firstnumber to be able to do the math
     if(operatorMath === '÷'){
         if(number != "0"){
+            // removing the comma replace(/,/g, '')  to empty space
             if(firstnumber.replace(/,/g, '') || number.replace(/,/g, '')){
                 totalOne = Number(firstnumber.replace(/,/g, '')) / Number(number.replace(/,/g, ''));
                 total = totalOne.toFixed(2).replace(/\.00$/, '');
@@ -116,9 +119,11 @@ function equal(){
     }else if(operatorMath === "%"){
         if(firstnumber.replace(/,/g, '') || number.replace(/,/g, '')){
             totalOne =  Number(number.replace(/,/g, '')) * (Number(firstnumber.replace(/,/g, '') / 100));
+            // deletinf the .00 from my total
             total = totalOne.toFixed(2).replace(/\.00$/, '');
         }else{
             totalOne =  Number(firstnumber) * (Number(number) / 100);
+            // deletinf the .00 from my total
             total = totalOne.toFixed(2).replace(/\.00$/, '');
         }
         number = total;
@@ -135,7 +140,13 @@ function equal(){
     console.log(formattedNum);
     firstnumber = "";
     operatorMath = "";
-    totalNumer.innerHTML = addCommaNumber(total);
+    
+    if(total === "Error"){
+        totalNumer.innerHTML = total;
+    }else{
+        totalNumer.innerHTML = addCommaNumber(total);
+    }
+    
     totalafter = 1;
 }
 
