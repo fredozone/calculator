@@ -16,8 +16,15 @@ let number = "";
 var firstnumber = "";
 let operatorMath = "";
 let dotMat = ".";
+var totalafter = 0;
 
 function addnumber(e){
+
+    if(totalafter === 1){
+        totalafter = 0;
+        number = "";
+    }
+    
     if(number.length < 20){
         number += e;
         totalNumer.innerHTML = addCommaNumber(number);
@@ -59,7 +66,7 @@ function operator(e){
         firstnumber = cerozero;
     }
 
-    totalNumer.innerHTML = operatorMath;
+    totalNumer.innerHTML = firstnumber;
     number = "";
 }
 
@@ -129,6 +136,7 @@ function equal(){
     firstnumber = "";
     operatorMath = "";
     totalNumer.innerHTML = addCommaNumber(total);
+    totalafter = 1;
 }
 
 function clearMath(){
@@ -136,6 +144,7 @@ function clearMath(){
     firstnumber = "";
     total = "";
     operatorMath = "";
+    totalafter = 0;
     totalNumer.innerHTML = "0";
 }
 
